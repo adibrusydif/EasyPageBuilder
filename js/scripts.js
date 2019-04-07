@@ -426,6 +426,65 @@ $(document).ready(function() {
 		$(this).addClass("active");
 		return false;
 	});
+	$("#loginbtn").click(function() {
+		$("body").removeClass('login edit')
+		$("body").addClass("myproject");
+		$("#myproject").removeClass("hide");
+		$("#login").addClass("hide");
+		$("#navMenu").removeClass("hide");
+		
+	});
+
+	$("#navProfile").click(function() {
+		$("body").removeClass('login edit devpreview sourcepreview')
+		$("body").addClass("profile");
+		$("#myproject").addClass("hide");
+		$("#editorPage").addClass("hide");
+		$("#profile").removeClass("hide");
+		
+	});
+
+	$("#navMyproject").click(function() {
+		$("body").removeClass('login edit profile')
+		$("body").addClass("myproject");
+		$("#myproject").removeClass("hide");
+		$("#editorPage").addClass("hide");
+
+		$("#btneditor").addClass("hide");
+	});
+
+	$("#createproject").click(function() {
+		$("body").removeClass('myproject')
+		$("body").addClass("edit");
+		$("#editorPage").removeClass("hide");
+		$("#myproject").addClass("hide");
+
+		$("#btneditor").removeClass("hide");
+	});
+
+	$("#navEditor").click(function() {
+		$("body").removeClass('myproject profile')
+		$("body").addClass("edit");
+		$("#editorPage").removeClass("hide");
+		$("#myproject").addClass("hide");
+		$("#btneditor").removeClass("hide");
+	});
+
+	$("#logout").click(function() {
+		$("body").removeClass('myproject profile devpreview sourcepreview')
+		$("body").addClass("login");
+		$("#editorPage").addClass("hide");
+		$("#myproject").addClass("hide");
+		$("#profile").addClass("hide");
+		$("#navMenu").addClass("hide");
+		$("#login").removeClass("hide");
+		$("#btneditor").addClass("hide");
+	});
+
+
+
+
+
 	$("#sourcepreview").click(function() {
 		$("body").removeClass("edit");
 		$("body").addClass("devpreview sourcepreview");

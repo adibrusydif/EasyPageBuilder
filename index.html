@@ -53,46 +53,35 @@ span.fa-2{
 }
   </style>
   </head>
-  <body style="cursor: auto;" class="edit toolbox-reset">
+  <body style="cursor: auto;" class="login toolbox-reset">
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="navbar-header" style="margin-right: 100px;">
+      <div class="navbar-header" style="margin-right: 10px;">
         <a class="navbar-brand emphasized3" href="#">
           Easy Page Builder
         </a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-        <ul class="nav navbar-nav">
-          <li>
-            <div class="btn-group" style="margin-right: 20px;">
-              <button onclick="resizeCanvas('lg')" class="btn btn-default navbar-btn"><i class="fa fa-desktop"></i> </button>
-              <button onclick="resizeCanvas('md')" class="btn btn-default navbar-btn"><i class="fa fa-laptop"></i> </button>
-              <button onclick="resizeCanvas('sm')" class="btn btn-default navbar-btn"><i class="fa fa-tablet"></i> </button>
-              <button onclick="resizeCanvas('xs')" class="btn btn-default navbar-btn"><i class="fa fa-mobile-phone"></i> </button>
-            </div>
-          </li>
-          <li>
-            <div class="btn-group" data-toggle="buttons-radio">
+        <ul class="nav navbar-nav" >
+            <div class="btn-group hide" data-toggle="buttons-radio"  id='btneditor'>
               <button id="edit" class="btn btn-default navbar-btn">
                 <i class="fa fa-edit"></i> Edit
-              </button>
-              <button type="button" class="btn btn-default navbar-btn" id="devpreview">
-                <i class="fa icon-eye-close" style="color: #333;"></i> Developer
               </button>
               <button type="button" class="btn btn-default navbar-btn" id="sourcepreview" >
                 <i class="fa icon-eye-open" style="color: #333;"></i> Preview
               </button>
             </div>
-          </li>
-
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <div class="btn-group">
-              <button class="btn btn-default navbar-btn" href="#clear" id="clear" color="#333;">
-                <i class="fa icon-trash" style="color: #333;"></i>Clear
+            <div class="btn-group hide" id='navMenu'>
+              <button type="button" class="btn btn-primary navbar-btn" id='navMyproject' >
+                My Project
               </button>
-              <button type="button" class="btn btn-primary navbar-btn" data-target="#downloadModal" rel="/build/downloadModal" role="button" data-toggle="modal">
-                <i class="fa icon-chevron-down" ></i>Download
+              <button type="button" class="btn btn-primary navbar-btn" id='navEditor' >
+                Editor
+              </button>
+              <button type="button" class="btn btn-primary navbar-btn" id='navProfile'>
+                Profile
               </button>
             </div>
           </li>
@@ -100,13 +89,29 @@ span.fa-2{
       </div>
     </nav>
 
+    <div class="container-fluid login" id='login'>
 
-    <div class="container-fluid">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id='loginbtn'>Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+    <div class="container-fluid hide" id="editorPage">
       <div class="changeDimension">
         <div class="row-fluid">
           <div class="">
             <span></span>
-            <div class="sidebar-nav">
+            <div class="sidebar-nav right">
               <ul class="nav nav-list accordion-group">
                 <li class="nav-header">
                   <div class="pull-right popover-info">
@@ -2313,6 +2318,18 @@ span.fa-2{
                   </div>
                 </li>
               </ul>
+              <ul class="nav d-flex align-items-center center ">
+                <li>
+                  <div class="btn-group">
+                    <button class="btn btn-default navbar-btn" href="#clear" id="clear" color="#333;">
+                      <i class="fa icon-trash" style="color: #333;"></i>Clear
+                    </button>
+                    <button type="button" class="btn btn-primary navbar-btn" data-target="#downloadModal" rel="/build/downloadModal" role="button" data-toggle="modal">
+                      <i class="fa icon-chevron-down" ></i>Download
+                    </button>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
           <!--/span-->
@@ -2382,6 +2399,132 @@ span.fa-2{
         <div class="modal-footer"> <a class="btn btn-primary navbar-btn" data-dismiss="modal" onclick="javascript:saveHtml();">Save</a> </div>
       </div>
     </div>
+
+    <div class="album py-5 bg-light hide" id='myproject'>
+      <div class="container">
+        <div class="container justify-content-between">
+          <div class="row ">
+            <div class="col-sm-10 col-md-10 py-4">
+              <h1 class="text-white">My Project</h4>
+              <h4 class="text-muted">Hi Shabrina Here's your project from EasyPageBuilder</p>
+            </div>
+            <div class="col-sm-2 offset-md-2 py-4">
+              <button type="button" class="btn btn-primary navbar-btn" id='createproject'>
+                Create Project
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">Project Website Company Profile</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-orange">4 April 2019</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">Project Website Company Profile</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-orange">4 April 2019</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">Project Website Company Profile</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-orange">4 April 2019</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">Project Website Company Profile</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-orange">4 April 2019</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">Project Website Company Profile</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-orange">4 April 2019</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">Project Website Company Profile</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-orange">4 April 2019</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  
+        </div>
+      </div>
+    </div>
+
+      <div class="container justify-content-between hide" id='profile'>
+        <div class="row ">
+          <div class="col-sm-10 col-md-10 py-4">
+            <h1 class="text-white">Shabrina Prily</h4>
+            <h4 class="text-muted">Here the way for you to logout</p>
+          </div>
+          <div class="col-sm-2 offset-md-2 py-4">
+            <button type="button" class="btn btn-primary navbar-btn" id='logout'>
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
   
   <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
     <!--[if lt IE 9]>
